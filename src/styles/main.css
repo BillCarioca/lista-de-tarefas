@@ -123,6 +123,7 @@ th, td{
 }
 .linha:nth-child(even) {
     background:#008b8b;
+    color: #f0ffff;
 }
 .linha td:nth-child(1),.linha td:nth-child(4){
     text-align: center;
