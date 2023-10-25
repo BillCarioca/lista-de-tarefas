@@ -12,17 +12,6 @@ const state = {
         filterLabel:document.getElementById("label__filter"),
         menuFilter:document.getElementById("menu__filter"),
     }
-
-}
-
-async function showMenu(){
-    state.action.filterLabel.classList.add("oculto")
-    state.action.menuFilter.classList.remove("oculto")
-
-}
-async function hideMenu(){
-    state.action.filterLabel.classList.remove("oculto")
-    state.action.menuFilter.classList.add("oculto")
 }
 
 function adicionarTarefa(){
@@ -35,55 +24,15 @@ function adicionarTarefa(){
     criarLinhaNaTabela(tarefa)
 }
 
-function removerTodasTarefas(){
-    // apaga todas as tarefas da lista e apaga todas a linha da tabela
-    excluirTodasTarefas()
-    state.tabela.tarefas.innerHTML=""
+async function showMenu(){
+    state.action.filterLabel.classList.add("oculto")
+    state.action.menuFilter.classList.remove("oculto")
 
 }
 
-function habilitarTarefa(id){
-    const editId = "editar_"+id
-    const saveId = "salvar_"+id
-    const titleId = "title_"+id
-    const descriptionId = "description_"+id
-    // exibe o botão Salvar e Ocuta o botão Editar
-    const buttonEditar = document.getElementById(editId)
-    const buttonSalvar = document.getElementById(saveId)
-    buttonEditar.classList.add("oculto")
-    buttonSalvar.classList.remove("oculto")
-    // habilita a edição nas celulas de titulo e descrição na linha da tabela
-    const celulaTitle = document.getElementById(titleId)
-    const celulaDescription = document.getElementById(descriptionId)
-    celulaTitle.setAttribute("contenteditable", "true")
-    celulaDescription.setAttribute("contenteditable", "true")
-}
-
-function salvarTarefa(id){
-    const editId = "editar_"+id
-    const saveId = "salvar_"+id
-    const titleId = "title_"+id
-    const descriptionId = "description_"+id
-    // exibe o botão Editar e Ocuta o botão Salvar
-    const buttonEditar = document.getElementById(editId)
-    const buttonSalvar = document.getElementById(saveId)
-    buttonEditar.classList.remove("oculto")
-    buttonSalvar.classList.add("oculto")
-    // desabilita a edição nas celulas de titulo e descrição na linha da tabela
-    const celulaTitle = document.getElementById(titleId)
-    const celulaDescription = document.getElementById(descriptionId)
-    celulaTitle.setAttribute("contenteditable", "false")
-    celulaDescription.setAttribute("contenteditable", "false")
-    // realida a atualização na lista de tarefas
-    editarTarefa(id,celulaTitle.innerText,celulaDescription.innerText)
-}
-
-function deletarTarefa(id){
-    // remove a linha da tabela
-    let linhaParaDeletar = document.getElementById(id)
-    linhaParaDeletar.remove()
-    // remove a tarefa da lista de tarefas
-    excluirTarefa(id)
+async function hideMenu(){
+    state.action.filterLabel.classList.remove("oculto")
+    state.action.menuFilter.classList.add("oculto")
 }
 
 async function filtrarTabela(filter){
@@ -137,7 +86,55 @@ function criarLinhaNaTabela(tarefa){
     state.tabela.tarefas.appendChild(linha)
 }
 
+function habilitarTarefa(id){
+    const editId = "editar_"+id
+    const saveId = "salvar_"+id
+    const titleId = "title_"+id
+    const descriptionId = "description_"+id
+    // exibe o botão Salvar e Ocuta o botão Editar
+    const buttonEditar = document.getElementById(editId)
+    const buttonSalvar = document.getElementById(saveId)
+    buttonEditar.classList.add("oculto")
+    buttonSalvar.classList.remove("oculto")
+    // habilita a edição nas celulas de titulo e descrição na linha da tabela
+    const celulaTitle = document.getElementById(titleId)
+    const celulaDescription = document.getElementById(descriptionId)
+    celulaTitle.setAttribute("contenteditable", "true")
+    celulaDescription.setAttribute("contenteditable", "true")
+}
 
+function salvarTarefa(id){
+    const editId = "editar_"+id
+    const saveId = "salvar_"+id
+    const titleId = "title_"+id
+    const descriptionId = "description_"+id
+    // exibe o botão Editar e Ocuta o botão Salvar
+    const buttonEditar = document.getElementById(editId)
+    const buttonSalvar = document.getElementById(saveId)
+    buttonEditar.classList.remove("oculto")
+    buttonSalvar.classList.add("oculto")
+    // desabilita a edição nas celulas de titulo e descrição na linha da tabela
+    const celulaTitle = document.getElementById(titleId)
+    const celulaDescription = document.getElementById(descriptionId)
+    celulaTitle.setAttribute("contenteditable", "false")
+    celulaDescription.setAttribute("contenteditable", "false")
+    // realida a atualização na lista de tarefas
+    editarTarefa(id,celulaTitle.innerText,celulaDescription.innerText)
+}
+
+function deletarTarefa(id){
+    // remove a linha da tabela
+    let linhaParaDeletar = document.getElementById(id)
+    linhaParaDeletar.remove()
+    // remove a tarefa da lista de tarefas
+    excluirTarefa(id)
+}
+
+function removerTodasTarefas(){
+    // apaga todas as tarefas da lista e apaga todas a linha da tabela
+    excluirTodasTarefas()
+    state.tabela.tarefas.innerHTML=""
+}
 
 
 function init(){

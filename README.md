@@ -2,7 +2,7 @@
 
 🎉Bem-vindo ao **Lista de Tarefas!** Neste repositório, você encontrará uma lista de tarefas dinâmica e intuitiva. Este projeto não apenas oferece entretenimento, mas também demonstra várias técnicas avançadas de desenvolvimento de apicações web em JavaScript.
 <p align="center">
-  <img src="./tela-inicial.jpeg" alt="Tela inicial da lista de Tarefas">
+  <img src="./tela-inicial.jpeg" alt="Tela inicial da lista de tarefas">
 </p>
 
 ## Tecnologias
@@ -26,7 +26,7 @@
 2. Abra o arquivo `index.html` em seu navegador web.
 3. Use as setas direcionais para mover o personagem e a barra de espaço para interagir.
 
-🎁 Ou [Clique Aqui](https://wagnernasc.github.io/to-do-list-ada/) 
+🎁 Ou [Clique Aqui](https://billcarioca.github.io/lista-de-tarefas/) 
 
 
 ### Créditos
