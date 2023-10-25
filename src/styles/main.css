@@ -5,6 +5,7 @@ body{
     height: 100vh;
     position: relative;
     justify-content: center;
+    overflow-y: scroll;
 }
 h1{
     padding: 1rem;
@@ -38,7 +39,7 @@ h1{
     
     border: none;
     min-width: 40%;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: .2rem;
     text-align: center;
     border-radius: 5px;
@@ -53,7 +54,7 @@ h1{
     border: none;
     color: #015a5a;
     border-radius: 5px;
-    padding: .1rem .9rem;
+    padding: 0 .8rem;
 }
 
 #button-add:hover{
@@ -106,22 +107,21 @@ h1{
 table{
     width: 100%;
     margin: .5rem;
+    background-color: #015a5a;
+    border-radius: 5px;
 }
 thead {
-    background-color: #cecccc;
-    
+    background-color: #008b8b;     
 }
-th{
+th, td{
     padding: .5rem 1rem;
     font-size: 1rem;
 }
-td{
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border:1px solid #cecccc;
+.linha{
+    background-color: #f0ffff;
 }
 .linha:nth-child(even) {
-    background:#f5f5f5;
+    background:#008b8b;
 }
 .oculto{
     display: none;
@@ -151,27 +151,57 @@ td{
 }
 
 .linha input{
-    width: 60px;
-    height: 30px;
+    width: 50px;
+    height: 25px;
     appearance: none;
-    border-radius: 30px;
+    border-radius: 25px;
     background-color: #cecccc;
     cursor: pointer;
     position: relative;
 }
 .linha input::before {
     content: "";
-    height: 20px;
-    width: 20px;
-    background-color: #803c3c;
+    height: 18px;
+    width: 18px;
+    background-color: #a0a0a0;
     top: 50%;
-    left: 0.3rem;
+    left: 0.2rem;
     border-radius: inherit;
     position: absolute;
     transform: translateY(-50%);
     transition: all 0.3s ease;
 }
 .linha input:checked::before {
-    left: 2.1rem;
+    left: 1.8rem;
     background-color: #008b8b;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 99%;
+        margin: 5px;
+        box-shadow: 0 0 .2rem #008b8b;
+        padding: .2rem;
+        margin: 0 1rem;
+    }
+    td, th{
+        padding: .2rem .5rem;
+        font-size: .8rem;
+    }
+    .editar, .salvar, .remover{
+        font-size: .8rem;
+        padding: 2px;
+    }
+}
+@media screen and (min-width: 601px) and (max-width: 800px){
+    .container{
+        width: 90%;
+        margin: 5px;
+        box-shadow: 0 0 .2rem #008b8b;
+        padding: .2rem;
+    }
+    td, th{
+        padding: .2rem .5rem;
+        font-size: .8rem;
+    }
 }
