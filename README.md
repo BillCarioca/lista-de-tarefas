@@ -7,31 +7,31 @@
 
 ## Tecnologias
 
-✨ **HTML5** e **CSS3** para a estrutura e aparência do app.<br>
+✨ **HTML5** e **CSS3** para a estrutura e aparência da lista de tarefas.<br>
 ✨ **JavaScript** para a lógica de programação e interatividade.<br>
 
 ## Funcionalidades Incríveis
 
-🧧 **Adicione Nova Tarefas**: Inicie adicionando novas tarefas que serão armazenadas e visualizadas em seguina na tabela na View.<br>
+🧧 **Adicione novas tarefas**: Inicie adicionando novas tarefas que serão armazenadas em tempo de execução e visualizadas na tela.<br>
 
-🧧 **Sistema de Filtro**: visualize suas tarefas de acordo com o estatos dela, se já foi concluídas ou não. <br>
+🧧 **Sistema de filtro**: Visualize todas as tarefas ou filtre de acordo com o estado delas. <br>
 
-🧧 **Sistema de Estatos**: altere o estatos das tarefas, se já foi concluídas ou não. <br>
+🧧 **Sistema de estado**: Altere o estado da tarefa para concluída ou pendente. <br>
 
-🧧 **Esclusão e Edição das Tarefas**: renovas tarefas ou as altere de acordo com sua necessidade. <br>
+🧧 **Exclusão e Edição das Tarefas**: Remova tarefas ou as altere de acordo com sua necessidade. <br>
 
 ### Como Usar
 
 1. Clone este repositório para sua máquina local.
 2. Abra o arquivo `index.html` em seu navegador web.
-3. Use as setas direcionais para mover o personagem e a barra de espaço para interagir.
+3. Agora basta adicionar, remover, alterar ou visualizar tarefas.
 
 🎁 Ou [Clique Aqui](https://billcarioca.github.io/lista-de-tarefas/) 
 
 
 ### Créditos
 
-Este projeto foi desenvolvido como parte de um projeto educacional do curso Ada Tech, **Vem Ser Tech - Back End**. por [Bill Carioca](https://www.linkedin.com/in/billcarioca/) e 
+Este projeto foi desenvolvido como parte de um projeto educacional do curso Ada Tech, **Vem Ser Tech - Back End**. por [Bill Carioca](https://www.linkedin.com/in/billcarioca/), [Gabriel Gurgel gonçalves](https://www.linkedin.com/in/gabriel-gurgel-93636b251/) e [Wagner].
 
 ---
 
