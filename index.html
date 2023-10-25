@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tarefas</title>
+    <!-- Reseta as configurações do css do navegador-->
+    <link rel="stylesheet" href="./src/styles/reset.css">
+    <!--Configurações principais-->
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de tarefas</h1>
+        <div class="alert__message"></div>
+        <div class="add__container">
+            <input type="text" placeholder="Titulo da nova tarefa" id="title-add">
+            <input type="text" placeholder="Descrição da tarefa" id="description-add">
+            <button id="button-add" onclick="adicionarTarefa()">+</button>
+        </div>
+        <div class="filter-remove-button">
+            <div class="filter">
+                <span id="label__filter" onclick="showMenu()"> Filtro</span>
+                <ul id="menu__filter" class="oculto">
+                    <li class="menu__option" onclick="filtrarTabela('all')" id="filter-all">Todos</li>
+                    <li class="menu__option" onclick="filtrarTabela('pending')" id="filter-pending">Pendentes</li>
+                    <li class="menu__option" onclick="filtrarTabela('completed')" id="filter-completed">Concluídos</li>
+                </ul>
+            </div>
+            <button class="remove-all" id="remove-all" onclick="removerTodasTarefas()">Apagar Tudo</button>
+            
+        </div>
+        <table class="table__container">
+            <thead>
+                <tr> 
+                    <th>Concluído</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody class="table__content" id="tabela-tarefas">
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="./src/scripts/tarefa.js"></script>
+    <script src="./src/scripts/dados.js"></script>
+    <script src="./src/scripts/engine.js"></script>
+</body>
+</html>

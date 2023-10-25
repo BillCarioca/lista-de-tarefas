@@ -1,0 +1,174 @@
+body{
+    display: flex;
+    align-items: center;
+    background-color: #f0ffff;
+    height: 100vh;
+    position: relative;
+    justify-content: center;
+}
+h1{
+    padding: 1rem;
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 50%;
+    margin: 1rem;
+    box-shadow: 0 0 .5rem #008b8b;
+    padding: 1rem;
+}
+.add__container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #008b8b;
+}
+
+.add__container input{
+    
+    border: none;
+    min-width: 40%;
+    font-size: 1.2rem;
+    padding: .2rem;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+#button-add{
+    background-color: #f0ffff;
+    box-shadow: 0 0 .3rem #008b8b;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    border: none;
+    color: #015a5a;
+    border-radius: 5px;
+    padding: .1rem .9rem;
+}
+
+#button-add:hover{
+    background-color: #ffd700;
+}
+
+.filter-remove-button{
+    display: flex;
+    width: 100%;
+    margin-top: .5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-all{
+    background-color: #f82424;
+    box-shadow: 0 0 .3rem #a71111;
+    color: #f0ffff;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+}
+#label__filter{
+    background-color: #008b8b;
+    box-shadow: 0 0 .3rem #015a5a;
+    color: #f0ffff;
+    font-weight: bolder;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+#menu__filter{
+    position: absolute;
+    z-index: 99;
+    padding: .2rem;
+    background-color: #f0ffff;
+    text-decoration: none;
+}
+.menu__option{
+    background-color: #008b8b;
+    box-shadow: 0 0 .3rem #015a5a;
+    color: #f0ffff;
+    font-weight: bolder;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    margin: .3rem;
+    text-decoration: none;
+}
+table{
+    width: 100%;
+    margin: .5rem;
+}
+thead {
+    background-color: #cecccc;
+    
+}
+th{
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+td{
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border:1px solid #cecccc;
+}
+.oculto{
+    display: none;
+}
+.exibir{
+    display: flex;
+}
+.editar, .salvar, .remover{
+    color: #f0ffff;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    padding: .3rem .5rem;
+    margin-left: .5rem;
+}
+.editar{
+    background-color: #ffd700;
+    box-shadow: 0 0 .3rem #d4b501;
+}
+.salvar{
+    background-color: #008b8b;
+    box-shadow: 0 0 .3rem #015a5a;
+}
+.remover{
+    background-color: #f82424;
+    box-shadow: 0 0 .3rem #a71111;
+}
+
+.linha input{
+    width: 60px;
+    height: 30px;
+    appearance: none;
+    border-radius: 30px;
+    background-color: #cecccc;
+    cursor: pointer;
+    position: relative;
+}
+.linha input::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #803c3c;
+    top: 50%;
+    left: 0.3rem;
+    border-radius: inherit;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+.linha input:checked::before {
+    left: 2.1rem;
+    background-color: #008b8b;
+}
