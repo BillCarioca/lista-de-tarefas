@@ -8,7 +8,7 @@ function criarNovaTarefa(titulo, descricao){
         listaTarefas.push(tarefa)
         return tarefa 
     }else {
-        throw new Error("Campos título e descrição não podem ser vazios!")
+        throw new ReferenceError("Campos título e descrição não podem ser vazios!")
     }
     
 }
@@ -62,8 +62,12 @@ function excluirTarefa (id){
 }
 
 function excluirTodasTarefas(){
-    if (listaTarefas!=[])
-        listaTarefas.splice(0,listaTarefas.length)
+    if (listaTarefas.length === 0){
+        throw new Error("Não é possível excluir todas as tarefas pois não existem tarefas!")
+    }else{
+        listaTarefas.splice(0, listaTarefas.length)
+    }
+    
 }
 
 function exibirTarefas(){

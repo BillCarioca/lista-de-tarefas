@@ -155,8 +155,13 @@ function deletarTarefa(id){
 
 function removerTodasTarefas(){
     // apaga todas as tarefas da lista e apaga todas a linha da tabela.
-    excluirTodasTarefas()
-    state.tabela.tarefas.innerHTML=""
+    try{
+        excluirTodasTarefas()
+        state.tabela.tarefas.innerHTML=""
+    }catch (error){
+        alert(error.message)
+    }
+    
 }
 
 
