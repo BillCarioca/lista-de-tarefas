@@ -4,7 +4,9 @@ const state = {
         descricao:document.getElementById("description-add")
     },
     tabela:{
-        tarefas: document.getElementById("tabela-tarefas")
+        tarefas: document.getElementById("tabela-tarefas"),
+        editTitle:"",
+        editDescription:""
     },
     action:{
         buttonAdd:document.getElementById("button-add"),
@@ -15,13 +17,19 @@ const state = {
 }
 
 function adicionarTarefa(){
-    // cria a nova tarefa e adiciona a lista de tarefas
-    const tarefa = criarNovaTarefa(state.novaTarefa.titulo.value,state.novaTarefa.descricao.value)
-    // limpa os campos de input
-    state.novaTarefa.titulo.value = ""
-    state.novaTarefa.descricao.value = ""
-    // cria uma linha com a tarefa criada
-    criarLinhaNaTabela(tarefa)
+    // impedi de criar uma tarefa com campo vazio.
+    try{
+        // cria a nova tarefa e adiciona a lista de tarefas.
+        const tarefa = criarNovaTarefa(state.novaTarefa.titulo.value,state.novaTarefa.descricao.value)
+        // limpa os campos de input
+        state.novaTarefa.titulo.value = ""
+        state.novaTarefa.descricao.value = ""
+        // cria uma linha com a tarefa criada.
+        criarLinhaNaTabela(tarefa)
+    }catch (err){
+        alert(err.message)
+    }
+    
 }
 
 async function showMenu(){
@@ -36,7 +44,7 @@ async function hideMenu(){
 }
 
 async function filtrarTabela(filter){
-    // filtra a lista de tarefa antes de criar uma nova tabela
+    // filtra a lista de tarefa antes de criar uma nova tabela.
     state.tabela.tarefas.innerHTML=""
     hideMenu()
     switch(filter){
@@ -56,7 +64,7 @@ async function filtrarTabela(filter){
 }
 
 function listarTarefas(lista){
-    // criar uma linha na tabela para cada tarefa na lista de tarefas
+    // criar uma linha na tabela para cada tarefa na lista de tarefas.
     if (lista!=[]){
         lista.forEach(tarefa=>criarLinhaNaTabela(tarefa))
     }
@@ -68,12 +76,12 @@ function criarLinhaNaTabela(tarefa){
     const statusId = "status_"+tarefa.id
     const titleId = "title_"+tarefa.id
     const descriptionId = "description_"+tarefa.id
-    // cria uma linha na tabela com o id da tarefa
+    // cria uma linha na tabela com o id da tarefa.
     const linha = document.createElement("tr")
     linha.setAttribute("id", tarefa.id)
     linha.setAttribute("class","linha")
     const status = tarefa.estaCompleta?"checked":""
-    // cria cada celula da linhas com os campos da tarefa com o id da tarefa no final de cada id da celula 
+    // cria cada celula da linhas com os campos da tarefa com o id da tarefa no final de cada id da celula.
     linha.innerHTML = ` <td id = "${statusId}"> <input type="checkbox" onclick="editarStatusTarefa(${tarefa.id})" ${status}></td>
                         <td id = "${titleId}">${tarefa.titulo}</td>
                         <td id = "${descriptionId}">${tarefa.descricao}</td>
@@ -82,7 +90,7 @@ function criarLinhaNaTabela(tarefa){
                         <button onclick="salvarTarefa(${tarefa.id})" id= "${saveId}" class = "salvar oculto"> Salvar </button>
                         <button onclick="deletarTarefa(${tarefa.id})" class = "remover">Remover</button>
                         </td>`
-    // adiciona a linha criada na tabela
+    // adiciona a linha criada na tabela.
     state.tabela.tarefas.appendChild(linha)
 }
 
@@ -91,16 +99,19 @@ function habilitarTarefa(id){
     const saveId = "salvar_"+id
     const titleId = "title_"+id
     const descriptionId = "description_"+id
-    // exibe o botão Salvar e Ocuta o botão Editar
+    // exibe o botão Salvar e Ocuta o botão Editar.
     const buttonEditar = document.getElementById(editId)
     const buttonSalvar = document.getElementById(saveId)
     buttonEditar.classList.add("oculto")
     buttonSalvar.classList.remove("oculto")
-    // habilita a edição nas celulas de titulo e descrição na linha da tabela
+    // habilita a edição nas celulas de titulo e descrição na linha da tabela.
     const celulaTitle = document.getElementById(titleId)
     const celulaDescription = document.getElementById(descriptionId)
     celulaTitle.setAttribute("contenteditable", "true")
     celulaDescription.setAttribute("contenteditable", "true")
+    // salva os campos antes da edição
+    state.tabela.editTitle = celulaTitle.innerText
+    state.tabela.editDescription = celulaDescription.innerText
 }
 
 function salvarTarefa(id){
@@ -108,36 +119,49 @@ function salvarTarefa(id){
     const saveId = "salvar_"+id
     const titleId = "title_"+id
     const descriptionId = "description_"+id
-    // exibe o botão Editar e Ocuta o botão Salvar
+    // exibe o botão Editar e Ocuta o botão Salvar.
     const buttonEditar = document.getElementById(editId)
     const buttonSalvar = document.getElementById(saveId)
     buttonEditar.classList.remove("oculto")
     buttonSalvar.classList.add("oculto")
-    // desabilita a edição nas celulas de titulo e descrição na linha da tabela
+    // desabilita a edição nas celulas de titulo e descrição na linha da tabela.
     const celulaTitle = document.getElementById(titleId)
     const celulaDescription = document.getElementById(descriptionId)
     celulaTitle.setAttribute("contenteditable", "false")
     celulaDescription.setAttribute("contenteditable", "false")
-    // realida a atualização na lista de tarefas
-    editarTarefa(id,celulaTitle.innerText,celulaDescription.innerText)
+    // realida a atualização na lista de tarefas.
+    try {
+        if(celulaTitle.innerText=="") celulaTitle.innerText = state.tabela.editTitle
+        if(celulaDescription.innerText=="") celulaDescription.innerText = state.tabela.editDescription
+        editarTarefa(id,celulaTitle.innerText,celulaDescription.innerText)        
+    } catch (error) {
+        alert(error.message)
+        init()
+    }
 }
 
 function deletarTarefa(id){
-    // remove a linha da tabela
-    let linhaParaDeletar = document.getElementById(id)
-    linhaParaDeletar.remove()
-    // remove a tarefa da lista de tarefas
-    excluirTarefa(id)
+    try {
+        // remove a linha da tabela.
+        let linhaParaDeletar = document.getElementById(id)
+        linhaParaDeletar.remove()
+        // remove a tarefa da lista de tarefas.
+        excluirTarefa(id)        
+    } catch (error) {
+        alert(error.message)
+    }
+
 }
 
 function removerTodasTarefas(){
-    // apaga todas as tarefas da lista e apaga todas a linha da tabela
+    // apaga todas as tarefas da lista e apaga todas a linha da tabela.
     excluirTodasTarefas()
     state.tabela.tarefas.innerHTML=""
 }
 
 
 function init(){
+    state.tabela.tarefas.innerHTML=""
     listarTarefas(buscarTodos())
 }
 

@@ -3,10 +3,14 @@ const listaTarefas = []
 
 function criarNovaTarefa(titulo, descricao){
     // Adiciona uma nova tarefa na lista de tarefas
-    const tarefa = new Tarefa(titulo, descricao);
-    listaTarefas.push(tarefa)
-
-    return tarefa
+    if (titulo!=""&&descricao!=""){
+        const tarefa = new Tarefa(titulo, descricao);
+        listaTarefas.push(tarefa)
+        return tarefa 
+    }else {
+        throw new Error("Campos título e descrição não podem ser vazios!")
+    }
+    
 }
     
 function buscarPorId(id){
@@ -41,6 +45,8 @@ function editarStatusTarefa(id){
     const index = listaTarefas.indexOf(buscarPorId(id))
     if(index!=-1){
         listaTarefas[index].estaCompleta = !listaTarefas[index].estaCompleta
+    }else{
+        alert("Tarefa não encontrada!")
     }
 }
 
