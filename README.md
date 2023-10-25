@@ -7,7 +7,7 @@
 
 ## Tecnologias
 
-✨ **HTML5** e **CSS3** para a estrutura e aparência do jogo.<br>
+✨ **HTML5** e **CSS3** para a estrutura e aparência do app.<br>
 ✨ **JavaScript** para a lógica de programação e interatividade.<br>
 
 ## Funcionalidades Incríveis
