@@ -111,7 +111,8 @@ table{
     border-radius: 5px;
 }
 thead {
-    background-color: #008b8b;     
+    background-color: #015a5a;   
+    color: #ffffff;  
 }
 th, td{
     padding: .5rem 1rem;
@@ -122,6 +123,9 @@ th, td{
 }
 .linha:nth-child(even) {
     background:#008b8b;
+}
+.linha td:nth-child(1),.linha td:nth-child(4){
+    text-align: center;
 }
 .oculto{
     display: none;
